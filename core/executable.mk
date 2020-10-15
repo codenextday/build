@@ -17,10 +17,11 @@ ifeq ($(strip $(LOCAL_MODULE_SUFFIX)),)
 LOCAL_MODULE_SUFFIX := $(TARGET_EXECUTABLE_SUFFIX)
 endif
 
+skip_build_from_source :=
 
 $(call target-executable-hook)
 
-skip_build_from_source :=
+
 ifdef LOCAL_PREBUILT_MODULE_FILE
 ifeq (,$(call if-build-from-source,$(LOCAL_MODULE),$(LOCAL_PATH)))
 include $(BUILD_SYSTEM)/prebuilt_internal.mk

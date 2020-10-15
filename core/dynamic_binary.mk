@@ -38,6 +38,8 @@ include $(BUILD_SYSTEM)/binary.mk
 strip_input := $(linked_module)
 strip_output := $(LOCAL_BUILT_MODULE)
 
+$(info ">> strip_output "$(strip_output))
+
 $(strip_output): PRIVATE_STRIP := $(TARGET_STRIP)
 $(strip_output): PRIVATE_OBJCOPY := $(TARGET_OBJCOPY)
 $(strip_output): PRIVATE_READELF := $(TARGET_READELF)
@@ -59,11 +61,11 @@ endif
 #
 # If the binary we're copying is acp or a prerequisite,
 # use cp(1) instead.
-
-#$(strip_output): $(strip_input)
-#	@echo "target Unstripped: $(PRIVATE_MODULE) ($@)"
-#	$(copy-file-to-target-with-cp)
-
+ifneq ($(strip $(OVERRIDE_BUILT_MODULE_PATH)),)
+$(strip_output): $(strip_input)
+	@echo "target Unstripped: $(PRIVATE_MODULE) ($@)"
+	$(copy-file-to-target-with-cp)
+endif
 $(cleantarget): PRIVATE_CLEAN_FILES += \
     $(linked_module) \
     $(breakpad_output) \

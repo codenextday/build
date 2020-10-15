@@ -61,14 +61,18 @@ ifneq ($(strip $(LOCAL_BUILT_MODULE)$(LOCAL_INSTALLED_MODULE)),)
 endif
 
 my_register_name := $(LOCAL_MODULE)
-$(info ">> my_register_name:"$(LOCAL_MODULE))
+$(info ">> my_register_name:"$(LOCAL_MODULE)--$(install_path_var))
 intermediates := $(call local-intermediates-dir,,,$(my_host_cross))
 
-
-
-built_module_path := $(intermediates)
+include $(BUILD_SYSTEM)/configure_module_stem.mk
+OVERRIDE_BUILT_MODULE_PATH := $(strip $(OVERRIDE_BUILT_MODULE_PATH))
+ifdef OVERRIDE_BUILT_MODULE_PATH
+  built_module_path := $(OVERRIDE_BUILT_MODULE_PATH)
+else
+  built_module_path := $(intermediates)
+endif
 LOCAL_BUILT_MODULE := $(built_module_path)/$(my_built_module_stem)
-
+$(info ">> LOCAL_BUILT_MODULE = $(built_module_path)//$(my_built_module_stem))
 LOCAL_INSTALLED_MODULE := $(my_module_path)/$(my_installed_module_stem)
 
 # Assemble the list of targets to create PRIVATE_ variables for.
@@ -141,11 +145,9 @@ $(foreach c, $(my_path_components),\
 ###########################################################
 ## Module installation rule
 ###########################################################
-
 $(LOCAL_INSTALLED_MODULE): $(LOCAL_BUILT_MODULE)
-	@echo "Install: $@"
+	@echo "Install: $@ > $^"
 	$(copy-file-to-target-with-cp)
-
 
 ###########################################################
 ## Register with ALL_MODULES
