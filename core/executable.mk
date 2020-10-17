@@ -57,7 +57,7 @@ $(linked_module): PRIVATE_TARGET_CRTEND_O := $(my_target_crtend_o)
 $(linked_module): PRIVATE_TARGET_OUT_INTERMEDIATE_LIBRARIES := $($(LOCAL_2ND_ARCH_VAR_PREFIX)TARGET_OUT_INTERMEDIATE_LIBRARIES)
 $(linked_module): PRIVATE_POST_LINK_CMD := $(LOCAL_POST_LINK_CMD)
 
-#$(info *** so deps: $(my_system_shared_libraries))
+$(info *** so deps: $(my_system_shared_libraries))
 ifeq ($(LOCAL_FORCE_STATIC_EXECUTABLE),true)
 $(linked_module): $(all_objects) $(all_libraries)
 	$(transform-o-to-static-executable)
