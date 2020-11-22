@@ -15,8 +15,8 @@
 #
 
 
-TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/arm-linux-gnueabihf
-TARGET_TOOLS_PREFIX := $(TARGET_TOOLCHAIN_ROOT)/bin/arm-linux-gnueabihf-
+TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/arm-linux-gnueabi
+TARGET_TOOLS_PREFIX := $(TARGET_TOOLCHAIN_ROOT)/bin/arm-linux-gnueabi-
 
 TARGET_CC := $(TARGET_TOOLS_PREFIX)gcc
 TARGET_CXX := $(TARGET_TOOLS_PREFIX)g++
@@ -94,7 +94,6 @@ TARGET_GLOBAL_LDFLAGS += \
 			-Wl,--build-id=md5 \
 			-Wl,--warn-shared-textrel \
 			-Wl,--fatal-warnings \
-			-Wl,--icf=safe \
 			-Wl,--hash-style=gnu \
 			-Wl,--no-undefined-version
 

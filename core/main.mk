@@ -43,6 +43,7 @@ BUILD_TARGET_EXEXUTABLE :=
 # Bring in standard build system definitions.
 include $(BUILD_SYSTEM)/definitions.mk
 
+include $(BUILD_SYSTEM)/Makefile
 
 include $(BUILD_SYSTEM)/kernel.mk
 include $(BUILD_SYSTEM)/bootloader.mk
@@ -51,7 +52,7 @@ $(info ">> ALL_MODULES before:"$(ALL_MODULES))
 include $(TOPDIR)system/build.mk
 $(info ">> ALL_MODULES after:"$(ALL_MODULES))
 
-include $(BUILD_SYSTEM)/Makefile
+#include $(BUILD_SYSTEM)/Makefile
 
 subdirs := $(TOP)
 
@@ -61,7 +62,10 @@ FULL_BUILD := true
 .PHONY: rootfs
 rootfs: $(INSTALLED_ROOTFS_TARGET)
 
-	
+
+all_target:$(ALL_MODULES)
+	@echo ">> target modules"  $^                                                                                                                                                                                                                                      
+
 .PHONY: clean
 clean:
 	@rm -rf $(OUT_DIR)/* $(OUT_DIR)/..?* $(OUT_DIR)/.[!.]*

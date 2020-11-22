@@ -66,7 +66,7 @@ endef
 #################################################################
 
 include $(BUILD_SYSTEM)/host_config.mk
-include $(BUILD_SYSTEM)/target_arm64.mk
+include $(BUILD_SYSTEM)/target_arm.mk
 
 
 # 

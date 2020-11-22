@@ -91,8 +91,8 @@ ifndef LOCAL_IS_HOST_MODULE
 ifeq ($(LOCAL_MODULE_CLASS),SHARED_LIBRARIES)
 LOCAL_INTERMEDIATE_TARGETS += $(LOCAL_BUILT_MODULE).toc
 $(LOCAL_BUILT_MODULE).toc: $(LOCAL_BUILT_MODULE)
-	$(call transform-shared-lib-to-toc,$<,$@.tmp)
-	$(call commit-change-for-toc,$@)
+#	$(call transform-shared-lib-to-toc,$<,$@.tmp)
+#	$(call commit-change-for-toc,$@)
 
 # Kati adds restat=1 to ninja. GNU make does nothing for this.
 .KATI_RESTAT: $(LOCAL_BUILT_MODULE).toc

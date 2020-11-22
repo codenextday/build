@@ -57,5 +57,5 @@ bootloader: $(INSTALLED_BOOTLOADER_MODULE)
 rootfs: $(INSTALLED_ROOTFS_TARGET)
 
 
-all_target:$(ALL_MODULES)
-	@echo ">> target modules"  $^
+#all_target:$(ALL_MODULES)
+#	@echo ">> target modules"  $^

@@ -81,7 +81,7 @@ TARGET_OS := linux
 ifneq ($(filter %64,$(TARGET_ARCH)),)
 TARGET_IS_64_BIT := true
 endif
-
+TARGET_ARCH = arm
 # the target build type defaults to release
 ifneq ($(TARGET_BUILD_TYPE),debug)
 TARGET_BUILD_TYPE := release

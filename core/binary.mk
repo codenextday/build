@@ -949,7 +949,7 @@ $(normal_objects) : | $(my_generated_sources)
 #$(all_objects) : $(import_includes)
 #else
 $(all_objects) :
-# | $(import_includes)
+#| $(import_includes)
 #endif
 ALL_C_CPP_ETC_OBJECTS += $(all_objects)
 
